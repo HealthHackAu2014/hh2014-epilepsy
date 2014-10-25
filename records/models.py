@@ -17,13 +17,13 @@ class Patient(models.Model):
         return self.anon_number
 
 SURGERY_CHOICES = (
-    (0, 'Anterior temporal lobectomy'),
-    (1, 'Other temporal resection'),
-    (2, 'Extra temporal resection'),
-    (3, 'Repeat resecetion'),
-    (4, 'Vagal nerve stimulator'),
-    (5, 'Temporal lesionectomy'),
-    (6, 'Further resection'),)
+    ('0', 'Anterior temporal lobectomy'),
+    ('1', 'Other temporal resection'),
+    ('2', 'Extra temporal resection'),
+    ('3', 'Repeat resecetion'),
+    ('4', 'Vagal nerve stimulator'),
+    ('5', 'Temporal lesionectomy'),
+    ('6', 'Further resection'),)
 
 
 
