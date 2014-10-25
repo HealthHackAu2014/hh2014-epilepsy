@@ -3,6 +3,14 @@ from django.db import models
 class Patient(models.Model):
     name = models.CharField(max_length=60, blank=True, null=True)
     anon_number = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('patient_detail', args=[self.slug])
+
+    def save(self):
+        self.slug = self.anon_number
+        super(Patient, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.anon_number
