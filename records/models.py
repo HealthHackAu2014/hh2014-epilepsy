@@ -1,7 +1,7 @@
 from django.db import models
 
 class Patient(models.Model):
-    name = models.CharField(max_length=60)
+    name = models.CharField(max_length=60, blank=True, null=True)
     anon_number = models.CharField(max_length=10)
 
     def __unicode__(self):
@@ -18,7 +18,7 @@ SURGERY_CHOICES = (
 class Surgery(models.Model):
     date = models.DateField()
     sugery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
-    patient = models.ForeignKey(Patient)
+    patient = models.ForeignKey(Patient, related_name='surgeries')
 
     def __unicode__(self):
         return '%s %s' %(self.date, self.get_sugery_type_display)
@@ -58,8 +58,8 @@ EVENT_CONFIDENCE_CHOICES = (
 class Seizure(models.Model):
     assessment_date = models.DateField()
     frequency = models.CharField(max_length=2, choices=SEIZURE_CHOICES) 
-    episode_severity = models.CharField(max_length=1, choices=SEVERITY_CHOICES)
-    event_confidence = models.CharField(max_length=1, choices=EVENT_CONFIDENCE_CHOICES)
+    episode_severity = models.CharField(max_length=1, choices=SEVERITY_CHOICES, blank=True)
+    event_confidence = models.CharField(max_length=1, choices=EVENT_CONFIDENCE_CHOICES, blank=True)
     patient = models.ForeignKey(Patient, related_name='seizures')
 
     def __unicode__(self):
