@@ -12,7 +12,10 @@ SURGERY_CHOICES = (
     (1, 'Other temporal resection'),
     (2, 'Extra temporal resection'),
     (3, 'Repeat resecetion'),
-    (4, 'Vagal nerve stimulator'),)
+    (4, 'Vagal nerve stimulator'),
+    (5, 'Temporal lesionectomy'),
+    (6, 'Further resection'),)
+
 
 
 class Surgery(models.Model):
