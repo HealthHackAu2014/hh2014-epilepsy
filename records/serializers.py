@@ -14,7 +14,7 @@ class MedSerializer(serializers.ModelSerializer):
 class SurgerySerializer(serializers.ModelSerializer):
     class Meta:
         model = Surgery
-        fields = ('date', 'sugery_type')
+        fields = ('date', 'surgery_type')
 
 class PatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

@@ -1,0 +1,51 @@
+{# base.html #}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      {% block title %}Epilepsy Case Management{% endblock title %}
+    </title>
+    {% block stylesheets %}
+      <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "css/local.css" %}">
+    {% endblock stylesheets %}
+    {% block javascript %}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="{% static "js/bootstrap.js" %}"></script> 
+    {% endblock javascript %}
+    <meta name="viewport" contect="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+      {% block navigation %}
+      <nav class="navbar navbar-inverse" role="navigation">{# title/header row  #}
+        <div class="navbar-header">
+            <a class="navbar-brand" href=""><img class="brand" src="">ECM</img></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li{% if request.path == "/records/patient-list/" %} class="active"{% endif %}><a href="{% url 'patient_list' %}">Patient List</a></li>
+            <li{% if request.path == "/records/patient/add/" %} class="active"{% endif %}><a href="">Add Patient</a></li>
+          </ul>
+        </div>
+        </nav>
+      {% endblock navigation %}
+      </div> <!-- end navigation row -->
+
+    <div class="row">{# main content #}
+          <div class="col-md-1">
+            <div class="row">&nbsp</div>{# these empty rows are padding #}
+            {% block sidebar %}
+            {% endblock sidebar %} {# end sidebar #}
+          </div>
+          <div class="col-md-10">
+            {% block content %}
+            {% endblock content %}
+          </div>{# end content #}
+      </div> {# end container-fluid #}
+      <div class="row" id="footer">{# footer #}
+    </div>
+  </body>
+</html>

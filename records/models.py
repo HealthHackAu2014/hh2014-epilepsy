@@ -10,7 +10,7 @@ class Patient(models.Model):
 
     def save(self):
         self.slug = self.anon_number
-        super(Patient, self).save(*args, **kwargs)
+        super(Patient, self).save() 
 
     def __unicode__(self):
         return self.anon_number
@@ -28,7 +28,7 @@ SURGERY_CHOICES = (
 
 class Surgery(models.Model):
     date = models.DateField()
-    sugery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
+    surgery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
     patient = models.ForeignKey(Patient, related_name='surgeries')
 
     def __unicode__(self):
