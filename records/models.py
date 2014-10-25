@@ -33,7 +33,7 @@ class Surgery(models.Model):
     patient = models.ForeignKey(Patient, related_name='surgeries')
 
     def __unicode__(self):
-        return '%s %s' %(self.date, self.get_sugery_type_display())
+        return '%s %s' %(self.date, self.get_surgery_type_display())
 
 SEIZURE_CHOICES = (
 ('1', 'Seizure-free, need for antiepileptic drug unknown'),
