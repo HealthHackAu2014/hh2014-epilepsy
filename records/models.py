@@ -12,7 +12,10 @@ SURGERY_CHOICES = (
     (1, 'Other temporal resection'),
     (2, 'Extra temporal resection'),
     (3, 'Repeat resecetion'),
-    (4, 'Vagal nerve stimulator'),)
+    (4, 'Vagal nerve stimulator'),
+    (5, 'Temporal lesionectomy'),
+    (6, 'Further resection'),)
+
 
 
 class Surgery(models.Model):
@@ -21,7 +24,7 @@ class Surgery(models.Model):
     patient = models.ForeignKey(Patient, related_name='surgeries')
 
     def __unicode__(self):
-        return '%s %s' %(self.date, self.get_sugery_type_display)
+        return '%s %s' %(self.date, self.get_sugery_type_display())
 
 SEIZURE_CHOICES = (
 ('1', 'Seizure-free, need for antiepileptic drug unknown'),
