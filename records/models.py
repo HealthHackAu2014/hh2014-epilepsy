@@ -85,7 +85,7 @@ MED_FREQ_CHOICES = (
 )
 
 class Medication(models.Model):
-    patient = models.ForeignKey(Patient)
+    patient = models.ForeignKey(Patient, related_name='medications')
     dosage = models.IntegerField()
     dose_unit = models.CharField(max_length=1, choices=DOSE_UNIT_CHOICES)   
     frequency = models.CharField(max_length=4, choices=MED_FREQ_CHOICES)
