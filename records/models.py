@@ -20,6 +20,8 @@ class Surgery(models.Model):
     sugery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
     patient = models.ForeignKey(Patient)
 
+    def __unicode__(self):
+        return '%s %s' %(self.date, self.get_sugery_type_display)
 
 SEIZURE_CHOICES = (
 ('1', 'Seizure-free, need for antiepileptic drug unknown'),
@@ -59,6 +61,9 @@ class Seizure(models.Model):
     episode_severity = models.CharField(max_length=1, choices=SEVERITY_CHOICES)
     event_confidence = models.CharField(max_length=1, choices=EVENT_CONFIDENCE_CHOICES)
     patient = models.ForeignKey(Patient, related_name='seizures')
+
+    def __unicode__(self):
+        return '%s %s' %(self.assessment_date, self.get_episode_severity_display())
 
 DOSE_UNIT_CHOICES = (
 ('0', 'ug'),
