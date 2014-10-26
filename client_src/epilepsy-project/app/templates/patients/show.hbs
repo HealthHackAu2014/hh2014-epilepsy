@@ -1,0 +1,74 @@
+<h2>Patient Numero {{anon_number}}</h2>
+
+{{badass-chart data=seizureData secondaryData=medicationData}}
+
+<h3>Medications</h3>
+
+<table class="table table-hover table-striped">
+<thead>
+  <tr>
+    <th>Date</th>
+    <th>Dosage</th>
+    <th>Dose Unit</th>
+    <th>Frequency</th>
+    <th>Name</th>
+    <th>No Medications</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each medication in medications}}
+    <tr>
+      <td>{{format-date medication.date}}</td>
+      <td>{{medication.dosage}}</td>
+      <td>{{medication.dose_unit}}</td>
+      <td>{{medication.frequency}}</td>
+      <td>{{medication.name}}</td>
+      <td>{{medication.no_medications}}</td>
+    </tr>
+  {{/each}}
+</tbody>
+</table>
+
+
+<h3>Seizures</h3>
+
+<table class="table table-hover table-striped">
+<thead>
+  <tr>
+    <th>Assessment Date</th>
+    <th>Severity</th>
+    <th>Event Confidence</th>
+    <th>Frequency</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each seizure in seizures}}
+    <tr>
+      <td>{{format-date seizure.assessment_date}}</td>
+      <td>{{seizure.episode_severity}}</td>
+      <td>{{seizure.event_confidence}}</td>
+      <td>{{seizure.frequency}}</td>
+    </tr>
+  {{/each}}
+</tbody>
+</table>
+
+
+<h3>Surgeries</h3>
+
+<table class="table table-hover table-striped">
+<thead>
+  <tr>
+    <th>Date</th>
+    <th>Type</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each surgery in surgeries}}
+    <tr>
+      <td>{{format-date surgery.date}}</td>
+      <td>{{surgery.surgery_type}}</td>
+    </tr>
+  {{/each}}
+</tbody>
+</table>

@@ -1,0 +1,26 @@
+{{#each}}
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Dosage</th>
+      <th>Dose Unit</th>
+      <th>Frequency</th>
+      <th>Name</th>
+      <th>No Medications</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each medication in medications}}
+      <tr>
+        <td>{{medication.date}}</td>
+        <td>{{medication.dosage}}</td>
+        <td>{{medication.dose_unit}}</td>
+        <td>{{medication.frequency}}</td>
+        <td>{{medication.name}}</td>
+        <td>{{medication.no_medications}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+  </table>
+{{/each}}
