@@ -23,7 +23,8 @@ SECRET_KEY = 'r1ky8q_h0_fu3vuq303#x^)_%v*3q#59olnsbqt)-)ra9%l52^'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates' ),)
+       
 ALLOWED_HOSTS = []
 
 
@@ -85,6 +86,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

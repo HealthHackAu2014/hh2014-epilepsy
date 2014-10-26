@@ -1,30 +1,39 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 
 class Patient(models.Model):
     name = models.CharField(max_length=60, blank=True, null=True)
     anon_number = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+    def get_absolute_url(self):
+        return reverse('patient_detail', args=[self.slug])
+
+    def save(self):
+        self.slug = self.anon_number
+        super(Patient, self).save() 
 
     def __unicode__(self):
         return self.anon_number
 
 SURGERY_CHOICES = (
-    (0, 'Anterior temporal lobectomy'),
-    (1, 'Other temporal resection'),
-    (2, 'Extra temporal resection'),
-    (3, 'Repeat resecetion'),
-    (4, 'Vagal nerve stimulator'),
-    (5, 'Temporal lesionectomy'),
-    (6, 'Further resection'),)
+    ('0', 'Anterior temporal lobectomy'),
+    ('1', 'Other temporal resection'),
+    ('2', 'Extra temporal resection'),
+    ('3', 'Repeat resecetion'),
+    ('4', 'Vagal nerve stimulator'),
+    ('5', 'Temporal lesionectomy'),
+    ('6', 'Further resection'),)
 
 
 
 class Surgery(models.Model):
     date = models.DateField()
-    sugery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
+    surgery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
     patient = models.ForeignKey(Patient, related_name='surgeries')
 
     def __unicode__(self):
-        return '%s %s' %(self.date, self.get_sugery_type_display())
+        return '%s %s' %(self.date, self.get_surgery_type_display())
 
 SEIZURE_CHOICES = (
 ('1', 'Seizure-free, need for antiepileptic drug unknown'),
