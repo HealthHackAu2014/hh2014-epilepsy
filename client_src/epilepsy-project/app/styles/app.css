@@ -120,3 +120,13 @@ svg {
 .dl-horizontal dd:after {
   clear: both;
 }
+
+
+
+.med1 {
+  fill: red;
+}
+
+.med2 {
+  fill: blue;
+}

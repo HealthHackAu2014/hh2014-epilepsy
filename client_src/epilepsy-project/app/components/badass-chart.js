@@ -36,16 +36,21 @@ export default Ember.Component.extend({
       var currName = datum.name;
       if (Ember.isEmpty(sortedMeds[currName])) {
         sortedMeds[currName] = [];
-        sortedMeds[currName]['meta'] = secondaryData.meta;
+        var copied = Ember.$.extend(true, {}, secondaryData.meta);
+        sortedMeds[currName]['meta'] = copied;
+        var processedName = currName.replace(/\s/, '');
+        sortedMeds[currName]['meta']['name'] = processedName;
         sortedMeds[currName].push(datum);
       } else {
         sortedMeds[currName].push(datum);
       }
     }.bind(this));
 
+
+
+
     for (var medData in sortedMeds) {
         if (sortedMeds.hasOwnProperty(medData)) {
-          console.log(medData);
           this.generateGraph(svg, sortedMeds[medData]);
         }
     }
@@ -145,8 +150,8 @@ export default Ember.Component.extend({
     } else if (type == 'line') {
 
       var line = d3.svg.line()
-        .x(function(d) { window.thing = x; console.log(d[dom]); return x(d[dom]); })
-        .y(function(d) { console.log(d[val]); return y(d[val]); })
+        .x(function(d) { return x(d[dom]); })
+        .y(function(d) { return y(d[val]); })
         .interpolate('linear');
 
       var lines = svg.append('g')
@@ -156,9 +161,10 @@ export default Ember.Component.extend({
         .attr('d', line(data));
     
     } else if (type == 'dots') {
+      console.log(data)
+
       var dots = svg
       .append('g')
-      .attr('class', 'dots')
       .selectAll('g')
       .data(data)
       .enter()
@@ -166,6 +172,7 @@ export default Ember.Component.extend({
 
       dots
       .append('circle')
+      .attr('class', data.meta.name)
       .attr('r', 4)
       .attr('cx', function(d) { return x(d[dom]); })
       .attr('cy', function(d) { return y(d[val]); });
