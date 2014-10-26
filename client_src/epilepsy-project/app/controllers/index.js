@@ -3,6 +3,7 @@ import ajax from 'ic-ajax';
 
 export default Ember.ObjectController.extend({
 
+
   seizureData: function() {
     return this.setupSeizureData(this.get('seizures'));
   }.property('seizures'),
