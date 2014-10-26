@@ -3,29 +3,13 @@ import ajax from 'ic-ajax';
 
 export default Ember.ObjectController.extend({
 
-  api: "http://115.146.95.69:8000",
-
-  fetchData: function() {
-    return ajax(this.get('api') + "/patients/?format=json");
-  }.property('api'),
-
   seizureData: function() {
-    this.get('fetchData')
-    .then(function(data) {
-      var seizures = data[0]['seizures'];
-      seizures = this.setupSeizureData(seizures);
-      this.set('seizureData', seizures);
-    }.bind(this));
-  }.property('fetchData'),
+    return this.setupSeizureData(this.get('seizures'));
+  }.property('seizures'),
 
   medicationData: function() {
-    this.get('fetchData')
-    .then(function(data) {
-      var medications = data[0]['medications'];
-      medications = this.setupMedicationData(medications);
-      this.set('medicationData', medications);
-    }.bind(this));
-  }.property('fetchData'),
+    return this.setupMedicationData(this.get('medications'));
+  }.property('medications'),
 
   setupSeizureData: function(data) {
     data.forEach( function(datum) {
@@ -68,17 +52,18 @@ export default Ember.ObjectController.extend({
       }
     });
 
+    console.log(data);
+
     data['meta'] = {
       domain : 'date',
       value  : 'dosage',
       level  : 'secondary',
-      type   : 'line',
+      type   : 'dots',
       title  : 'Medications Dosage'
     };
 
     return data;
 
   }
-
 
 });

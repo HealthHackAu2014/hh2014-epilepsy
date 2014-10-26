@@ -130,3 +130,15 @@ svg {
 .med2 {
   fill: blue;
 }
+
+.legend {
+  background: #fff;
+}
+
+.med1-legend {
+  color: red;
+}
+
+.med2-legend {
+  color: blue;
+}
