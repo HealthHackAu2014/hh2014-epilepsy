@@ -54,3 +54,8 @@ docs/_build/
 target/
 db.sqlite3
 records/migrations/????_*.py
+
+client_src/hh2014-epilepsy/tmp/*
+client_src/hh2014-epilepsy/vendor/*
+client_src/hh2014-epilepsy/bower_components/*
+client_src/hh2014-epilepsy/node_modules/*
