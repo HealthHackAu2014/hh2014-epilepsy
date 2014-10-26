@@ -30,7 +30,7 @@ class MedicationAddForm(forms.ModelForm):
             'dosage':forms.NumberInput(attrs={'class':'form-control'}),
             'dose_unit':forms.Select(attrs={'class':'form-control'}),
             'frequency':forms.Select(attrs={'class':'form-control'}),
-            'date':CalendarWidget(attrs={'class':'input-append form-control'}),
+            'date':CalendarWidget(attrs={'class':'input-append form-control', 'placeholder':'YYYY-MM-DD'}),
             'no_medications':forms.CheckboxInput(attrs={'class':'form-control'}),
        }  
     
@@ -50,6 +50,6 @@ class SurgeryAddForm(forms.ModelForm):
         model = Surgery
         widgets = {
             'patient':forms.Select(attrs={'class':'form-control'}),
-            'date': CalendarWidget(attrs={'class':'input-append form-control'}),
+            'date': CalendarWidget(attrs={'class':'input-append form-control', 'placeholder':'YYYY-MM-DD'}),
             'surgery_type': forms.Select(attrs={'class':'form-control'}),
         }

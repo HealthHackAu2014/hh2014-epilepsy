@@ -32,6 +32,9 @@ class Surgery(models.Model):
     surgery_type = models.CharField(max_length=1, choices=SURGERY_CHOICES)
     patient = models.ForeignKey(Patient, related_name='surgeries')
 
+    def get_absolute_url(self):
+        return reverse('patient_detail', args=[self.patient.slug])
+
     def __unicode__(self):
         return '%s %s' %(self.date, self.get_surgery_type_display())
 
@@ -74,6 +77,9 @@ class Seizure(models.Model):
     event_confidence = models.CharField(max_length=1, choices=EVENT_CONFIDENCE_CHOICES, blank=True)
     patient = models.ForeignKey(Patient, related_name='seizures')
 
+    def get_absolute_url(self):
+        return reverse('patient_detail', args=[self.patient.slug])
+
     def __unicode__(self):
         return '%s %s' %(self.assessment_date, self.get_episode_severity_display())
 
@@ -103,4 +109,9 @@ class Medication(models.Model):
     frequency = models.CharField(max_length=4, choices=MED_FREQ_CHOICES)
     name = models.CharField(max_length=20)
     date = models.DateField()
-    no_medications = models.BooleanField()
+    no_medications = models.BooleanField(default=False)  
+    
+    def get_absolute_url(self):
+        return reverse('patient_detail', args=[self.patient.slug])
+
+   
