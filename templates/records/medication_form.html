@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block stylesheets %}
+{{ block.super }}
+  {{ form.media.css }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+{{ block.super }}
+  {{ form.media.js }}
+{% endblock javascript %}
+
+{% block content %}
+<h1>Add Medication</h1>
+
+<div class="col-md-6 form-horizontal">
+    <form action="" method="post" role="form">{% csrf_token %} 
+        
+        <div class="hidden">{{ form.patient }}</div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Name</div>
+      <div class="col-md-5">{{ form.name }}</div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Dosage</div>
+      <div class="col-md-5">{{ form.dosage }}</div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Dose Unit</div>
+      <div class="col-md-5">{{ form.dose_unit }}</div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Frequency</div>
+      <div class="col-md-5">{{ form.frequency }}</div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Date</div>
+      <div class="col-md-5">{{ form.date }}</div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">No Medications?</div>
+      <div class="col-md-5">{{ form.no_medications }}</div>
+      </div>
+
+    </div>
+
+    <div class="col-md-6 form-horizontal">
+  <button type="submit" class="btn btn-primary">Add Medication</button>
+  </form>
+</div>
+{% endblock content %}
