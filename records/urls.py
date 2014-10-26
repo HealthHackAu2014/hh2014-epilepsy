@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^patient/(?P<slug>[-\w]+)/add-medication/$', views.MedicationAdd.as_view(), name='med_add'),
     url(r'^patient/(?P<slug>[-\w]+)/add-surgery/$', views.SurgeryAdd.as_view(), name='surgery_add'),
     url(r'^patient/(?P<slug>[-\w]+)/add-seizure/$', views.SeizureAdd.as_view(), name='seizure_add'),
+    url(r'^visual/$', views.patient_visual),
 )

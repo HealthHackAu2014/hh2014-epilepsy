@@ -25,19 +25,28 @@ def patient_list_json(request):
         patients = Patient.objects.all()
         serializer = PatientSerializer(patients, many=True)
         return JSONResponse(serializer.data)
-    
+
+
+def patient_visual(request):
+        return render(request, 'records/patient_visual.html')
+
+
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
 
+
 class PatientDetail(generic.DetailView):
     model = Patient
+
 
 class PatientList(generic.ListView):
     model = Patient
 
+
 class PatientForm(generic.FormView):
     model = Patient
+
 
 class MedicationAdd(generic.CreateView):
     fields = ['patient', 'dosage','dose_unit','frequency','name','date','no_medication']
@@ -48,6 +57,7 @@ class MedicationAdd(generic.CreateView):
         slug = self.kwargs['slug']
         patient = Patient.objects.get(slug=slug)
         return {'patient': patient.id }
+
 
 class SeizureAdd(generic.CreateView):
     fields = ['patient', 'assessment_date','frequency','episode_severity','event_confidence']
@@ -60,6 +70,7 @@ class SeizureAdd(generic.CreateView):
         date = datetime.datetime.today().strftime("%Y-%m-%d")
         print date, patient
         return {'patient': patient.id, 'assessment_date':date, }
+
 
 class SurgeryAdd(generic.CreateView):
     fields = ['patient', 'date','surgery_type']
