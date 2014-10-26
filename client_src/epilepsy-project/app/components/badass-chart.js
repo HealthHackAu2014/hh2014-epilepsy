@@ -31,19 +31,24 @@ export default Ember.Component.extend({
     this.generateGraph(svg, data);
 
     var sortedMeds = {};
+
     secondaryData.forEach(function(datum) {
       var currName = datum.name;
       if (Ember.isEmpty(sortedMeds[currName])) {
         sortedMeds[currName] = [];
+        sortedMeds[currName]['meta'] = secondaryData.meta;
+        sortedMeds[currName].push(datum);
       } else {
         sortedMeds[currName].push(datum);
       }
-    });
+    }.bind(this));
 
-    sortedMeds.forEach(function(medData) {
-      console.log(svg);
-      this.generateGraph(svg, medData);
-    });
+    for (var medData in sortedMeds) {
+        if (sortedMeds.hasOwnProperty(medData)) {
+          console.log(medData);
+          this.generateGraph(svg, sortedMeds[medData]);
+        }
+    }
   },
 
   generateGraph: function(svg, data) {

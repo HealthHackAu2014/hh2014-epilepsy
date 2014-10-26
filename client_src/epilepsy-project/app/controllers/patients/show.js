@@ -52,6 +52,8 @@ export default Ember.ObjectController.extend({
       }
     });
 
+    console.log(data);
+
     data['meta'] = {
       domain : 'date',
       value  : 'dosage',

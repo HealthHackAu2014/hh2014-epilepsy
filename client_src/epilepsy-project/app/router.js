@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('patients', function() {
+  this.resource('patients', {path: '/records/visual'}, function() {
     this.route('show', {path: '/:patient_id'});
   });
 });
