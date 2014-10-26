@@ -9,9 +9,9 @@
   <p><strong>Anon number:</strong>{{ object.anon_number }}</p>
   </div>
   <div class="col-md-6">
-    <a type="button" class="btn btn-info" href="">Add Medication</a>
-    <a type="button" class="btn btn-danger" href="">Add Seizure</a>
-    <a type="button" class="btn btn-warning" href="">Add Surgery</a>
+    <a type="button" class="btn btn-info" href="{{ object.get_absolute_url }}add-medication/">Add Medication</a>
+    <a type="button" class="btn btn-danger" href="{{ object.get_absolute_url }}add-seizure/">Add Seizure</a>
+    <a type="button" class="btn btn-warning" href="{{ object.get_absolute_url }}add-surgery/">Add Surgery</a>
   </div>
   <div class="col-md-12">
     {% if object.medications.all|length > 0 %}

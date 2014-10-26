@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block stylesheets %}
+{{ block.super }}
+  {{ form.media.css }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+{{ block.super }}
+  {{ form.media.js }}
+{% endblock javascript %}
+
+{% block content %}
+<h1>Add Surgery</h1>
+
+<div class="col-md-6 form-horizontal">
+    <form action="" method="post" role="form">{% csrf_token %} 
+        <div class="hidden">{{ form.patient }}</div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Date</div>
+      <div class="col-md-5">{{ form.date }}</div>
+      </div>
+
+      <div class="form-group"> 
+      <div class="col-md-4 control-label">Surgery Type</div>
+      <div class="col-md-5">{{ form.surgery_type }}</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 form-horizontal">
+
+  <button type="submit" class="btn btn-primary">Add Surgery</button>
+  </form>
+</div>
+{% endblock content %}
