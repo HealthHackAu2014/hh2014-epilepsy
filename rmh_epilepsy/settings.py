@@ -26,8 +26,9 @@ TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates' ),)
        
 ALLOWED_HOSTS = []
-
-
+TIMEZONE = 'Australia/Melbourne'
+DATE_FORMAT = 'Y/m/d'
+SHORT_DATE_FORMAT =  'Y/m/d'
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'records',
     'corsheaders',
+    'debug_toolbar.apps.DebugToolbarConfig',
 )
 
 MIDDLEWARE_CLASSES = (
